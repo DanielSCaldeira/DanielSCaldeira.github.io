@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Soares Caldeira — Desenvolvedor Full Stack .NET</title>
+<meta name="description" content="Desenvolvedor Full Stack com 8 anos de experiência em .NET, C#, React e Angular. Arquitetura de sistemas, microsserviços, Oracle e automação com IA.">
+<meta name="author" content="Daniel Soares Caldeira">
+<meta name="theme-color" content="#0b1120">
+<link rel="canonical" href="https://danielscaldeira.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Daniel Soares Caldeira — Desenvolvedor Full Stack .NET">
+<meta property="og:description" content="8 anos construindo sistemas críticos em .NET, C#, React e Angular. Autor da plataforma de segurança que serve de base para 30+ sistemas internos.">
+<meta property="og:url" content="https://danielscaldeira.github.io/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b1120'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='52' font-weight='bold' fill='%2338bdf8' text-anchor='middle'%3EDC%3C/text%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daniel Soares Caldeira",
+  "jobTitle": "Desenvolvedor Full Stack / Analista de Sistemas",
+  "email": "mailto:soarescaldeira@outlook.com",
+  "url": "https://danielscaldeira.github.io/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+  "sameAs": [
+    "https://github.com/DanielSCaldeira",
+    "https://www.linkedin.com/in/danielsoarescaldeira"
+  ],
+  "worksFor": { "@type": "Organization", "name": "FUNCEF" },
+  "knowsAbout": [".NET", "C#", "ASP.NET Core", "Microsserviços", "React", "Angular", "TypeScript", "Oracle", "MongoDB", "Redis", "Clean Architecture", "CQRS", "Automação com IA"]
+}
+</script>
+
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --bg:#f7f8fb; --bg-elev:#ffffff; --bg-soft:#eef1f7;
+  --fg:#111827; --fg-muted:#4b5563; --fg-dim:#6b7280;
+  --line:#e2e6ee; --line-strong:#cbd3e1;
+  --accent:#1d4ed8; --accent-fg:#ffffff; --accent-soft:#e8eefc;
+  --accent-2:#0e7490; --ok:#047857; --ok-soft:#e6f5ef;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 8px 24px -12px rgba(16,24,40,.18);
+  --radius:14px; --maxw:1080px;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#080c16; --bg-elev:#0f1524; --bg-soft:#151c2e;
+    --fg:#e9edf5; --fg-muted:#a7b0c2; --fg-dim:#7c869a;
+    --line:#1e2739; --line-strong:#2b3648;
+    --accent:#5b9cff; --accent-fg:#04101f; --accent-soft:#132444;
+    --accent-2:#22d3ee; --ok:#34d399; --ok-soft:#0e2b23;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#080c16; --bg-elev:#0f1524; --bg-soft:#151c2e;
+  --fg:#e9edf5; --fg-muted:#a7b0c2; --fg-dim:#7c869a;
+  --line:#1e2739; --line-strong:#2b3648;
+  --accent:#5b9cff; --accent-fg:#04101f; --accent-soft:#132444;
+  --accent-2:#22d3ee; --ok:#34d399; --ok-soft:#0e2b23;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:6px}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- topbar ---------- */
+header.top{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{display:flex; align-items:center; gap:14px; height:60px}
+.brand{font-weight:700; letter-spacing:-.01em; margin-right:auto; display:flex; align-items:center; gap:9px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--ok-soft)}
+nav.links{display:flex; gap:4px}
+nav.links a{
+  color:var(--fg-muted); font-size:.875rem; font-weight:500;
+  padding:7px 11px; border-radius:9px;
+}
+nav.links a:hover{color:var(--fg); background:var(--bg-soft); text-decoration:none}
+.ctrl{display:flex; gap:6px}
+.btn-icon{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  height:34px; min-width:34px; padding:0 10px;
+  background:var(--bg-elev); color:var(--fg-muted);
+  border:1px solid var(--line); border-radius:9px;
+  font:inherit; font-size:.78rem; font-weight:600; cursor:pointer;
+  letter-spacing:.02em;
+}
+.btn-icon:hover{color:var(--fg); border-color:var(--line-strong)}
+@media (max-width:800px){ nav.links{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 44px; border-bottom:1px solid var(--line)}
+.hero-grid{display:grid; grid-template-columns:1fr auto; gap:40px; align-items:start}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:.74rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.11em;
+  color:var(--ok); background:var(--ok-soft);
+  padding:5px 11px; border-radius:999px; margin-bottom:18px;
+}
+h1{
+  font-size:clamp(2rem,5.2vw,3.15rem); line-height:1.08;
+  letter-spacing:-.025em; margin:0 0 12px; font-weight:800;
+}
+.role{font-size:clamp(1.05rem,2.4vw,1.35rem); color:var(--fg); font-weight:600; margin:0 0 14px}
+.role em{color:var(--accent); font-style:normal}
+.pitch{font-size:1.03rem; color:var(--fg-muted); max-width:62ch; margin:0 0 24px}
+.meta{display:flex; flex-wrap:wrap; gap:8px 18px; font-size:.875rem; color:var(--fg-dim); margin-bottom:26px}
+.meta span{display:inline-flex; align-items:center; gap:6px}
+
+.actions{display:flex; flex-wrap:wrap; gap:10px}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 18px; border-radius:11px; font-size:.92rem; font-weight:600;
+  border:1px solid var(--line-strong); background:var(--bg-elev); color:var(--fg);
+  cursor:pointer; font-family:inherit;
+}
+.btn:hover{text-decoration:none; border-color:var(--accent)}
+.btn.primary{background:var(--accent); color:var(--accent-fg); border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+
+.stats{display:grid; gap:12px; min-width:200px}
+.stat{
+  background:var(--bg-elev); border:1px solid var(--line);
+  border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow);
+}
+.stat b{display:block; font-size:1.6rem; line-height:1.1; letter-spacing:-.03em; font-family:var(--mono); color:var(--accent)}
+.stat small{display:block; font-size:.76rem; color:var(--fg-dim); text-transform:uppercase; letter-spacing:.07em; margin-top:3px; font-weight:600}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); min-width:0}
+}
+
+/* ---------- sections ---------- */
+section{padding:52px 0; border-bottom:1px solid var(--line)}
+.sec-head{margin-bottom:28px}
+.sec-kicker{
+  font-family:var(--mono); font-size:.72rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.14em; color:var(--accent);
+  display:block; margin-bottom:7px;
+}
+h2{font-size:clamp(1.35rem,3vw,1.75rem); letter-spacing:-.02em; margin:0; font-weight:750}
+.sec-sub{color:var(--fg-muted); margin:9px 0 0; max-width:64ch; font-size:.96rem}
+
+/* value cards */
+.cards3{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px}
+.vcard{
+  background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; box-shadow:var(--shadow);
+}
+.vcard .ic{
+  width:38px;height:38px;border-radius:10px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); margin-bottom:14px;
+}
+.vcard h3{margin:0 0 7px; font-size:1.02rem; font-weight:700; letter-spacing:-.01em}
+.vcard p{margin:0; font-size:.9rem; color:var(--fg-muted)}
+
+/* stack */
+.stackgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+.sgroup{background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:18px}
+.sgroup h3{
+  margin:0 0 12px; font-size:.78rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.1em; color:var(--fg-dim); display:flex; align-items:center; gap:8px;
+}
+.sgroup h3::before{content:""; width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{
+  font-family:var(--mono); font-size:.775rem; font-weight:500;
+  padding:4px 9px; border-radius:7px;
+  background:var(--bg-soft); border:1px solid var(--line); color:var(--fg-muted);
+}
+.chip.core{background:var(--accent-soft); border-color:color-mix(in srgb,var(--accent) 30%,transparent); color:var(--accent); font-weight:700}
+
+/* timeline */
+.tl{border-left:2px solid var(--line); margin-left:6px; padding-left:24px; display:grid; gap:30px}
+.job{position:relative}
+.job::before{
+  content:""; position:absolute; left:-31px; top:6px;
+  width:12px;height:12px;border-radius:50%; background:var(--accent);
+  box-shadow:0 0 0 4px var(--bg);
+}
+.job .when{font-family:var(--mono); font-size:.78rem; color:var(--fg-dim); font-weight:600; letter-spacing:.03em}
+.job h3{margin:4px 0 2px; font-size:1.1rem; font-weight:700; letter-spacing:-.01em}
+.job .org{font-size:.9rem; color:var(--fg-muted); margin:0 0 12px}
+.job ul{margin:0; padding-left:19px; display:grid; gap:8px}
+.job li{font-size:.93rem; color:var(--fg-muted)}
+.job li strong{color:var(--fg); font-weight:650}
+
+/* projects */
+.pgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px}
+.proj{
+  display:flex; flex-direction:column;
+  background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow);
+}
+.proj:hover{border-color:var(--line-strong)}
+.proj .ptop{display:flex; align-items:center; gap:9px; margin-bottom:9px}
+.proj h3{margin:0; font-size:1rem; font-weight:700; font-family:var(--mono); letter-spacing:-.01em}
+.proj h3 a{color:var(--fg)}
+.proj h3 a:hover{color:var(--accent)}
+.badge{
+  margin-left:auto; font-size:.66rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.08em; padding:3px 7px; border-radius:5px;
+  background:var(--accent-soft); color:var(--accent);
+}
+.proj p{margin:0 0 14px; font-size:.89rem; color:var(--fg-muted); flex:1}
+.tags{display:flex; flex-wrap:wrap; gap:5px}
+.tag{font-family:var(--mono); font-size:.7rem; padding:3px 7px; border-radius:5px; background:var(--bg-soft); color:var(--fg-dim); border:1px solid var(--line)}
+
+/* two col */
+.cols2{display:grid; grid-template-columns:1.15fr .85fr; gap:36px}
+@media (max-width:800px){ .cols2{grid-template-columns:1fr; gap:28px} }
+.edu{display:grid; gap:14px}
+.edu-item{display:flex; gap:14px; align-items:baseline; padding-bottom:14px; border-bottom:1px dashed var(--line)}
+.edu-item:last-child{border-bottom:0; padding-bottom:0}
+.edu-item .yr{font-family:var(--mono); font-size:.76rem; color:var(--fg-dim); min-width:88px; font-weight:600}
+.edu-item b{display:block; font-size:.95rem; font-weight:650}
+.edu-item span{font-size:.85rem; color:var(--fg-muted)}
+
+/* contact */
+.contact{padding:56px 0; text-align:center; border-bottom:0}
+.contact h2{margin-bottom:10px}
+.contact p{color:var(--fg-muted); max-width:52ch; margin:0 auto 26px}
+.clist{display:flex; flex-wrap:wrap; gap:10px; justify-content:center}
+
+footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-dim); border-top:1px solid var(--line)}
+
+/* ---------- print (Ctrl+P -> PDF) ---------- */
+@media print{
+  :root{--bg:#fff;--bg-elev:#fff;--bg-soft:#f4f4f4;--fg:#000;--fg-muted:#333;--fg-dim:#555;--line:#ccc;--line-strong:#999;--accent:#12408f;--accent-soft:#eef2fa;--shadow:none}
+  header.top,.ctrl,.actions,.contact .clist,nav.links{display:none !important}
+  body{font-size:11.5pt}
+  section,.hero{padding:14px 0; break-inside:avoid; border-bottom:1px solid #ddd}
+  .proj,.vcard,.sgroup,.stat{break-inside:avoid; box-shadow:none}
+  h1{font-size:22pt}
+  a{color:#12408f}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:8pt; color:#666}
+  .proj h3 a::after,.brand a::after{content:""}
+}
+</style>
+</head>
+<body>
+
+<a class="sr" href="#main">Ir para o conteúdo</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Daniel S. Caldeira</div>
+    <nav class="links" aria-label="Seções">
+      <a href="#stack" data-en="Stack">Stack</a>
+      <a href="#experiencia" data-en="Experience">Experiência</a>
+      <a href="#projetos" data-en="Projects">Projetos</a>
+      <a href="#formacao" data-en="Education">Formação</a>
+      <a href="#contato" data-en="Contact">Contato</a>
+    </nav>
+    <div class="ctrl">
+      <button class="btn-icon" id="lang" type="button" aria-label="Mudar idioma / Switch language">EN</button>
+      <button class="btn-icon" id="theme" type="button" aria-label="Alternar tema claro/escuro">◐</button>
+      <button class="btn-icon" id="print" type="button" data-en="PDF">PDF</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" data-en="Open to opportunities">Aberto a oportunidades</span>
+      <h1>Daniel Soares Caldeira</h1>
+      <p class="role" data-en="Full Stack Developer — <em>.NET / C#</em> on the back end, <em>React &amp; Angular</em> on the front">Desenvolvedor Full Stack — <em>.NET / C#</em> no backend, <em>React e Angular</em> no front</p>
+      <p class="pitch" data-en="Eight years building systems that cannot fail: authentication and security, financial payment flows and internal platforms. I design the architecture, write the back end, deliver the screen — and automate whatever is repetitive along the way.">Oito anos construindo sistemas que não podem falhar: autenticação e segurança, fluxos financeiros de pagamento e plataformas internas. Desenho a arquitetura, escrevo o backend, entrego a tela — e automatizo o que é repetitivo no caminho.</p>
+      <div class="meta">
+        <span data-en="📍 Brasília / DF — Brazil (hybrid or remote)">📍 Brasília / DF — híbrido ou remoto</span>
+        <span data-en="🗣️ Portuguese (native) · English (technical)">🗣️ Português (nativo) · Inglês (técnico)</span>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Oportunidade%20—%20Desenvolvedor%20Full%20Stack" data-en="✉ Talk to me">✉ Falar comigo</a>
+        <a class="btn" href="https://www.linkedin.com/in/danielsoarescaldeira" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/DanielSCaldeira" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>8</b><small data-en="years in production">anos em produção</small></div>
+      <div class="stat"><b>30+</b><small data-en="systems on my platform">sistemas na plataforma</small></div>
+      <div class="stat"><b>600+</b><small data-en="commits last year">commits no último ano</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE -->
+<section id="valor">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-en="What I bring">O que eu entrego</span>
+      <h2 data-en="Three things a team gets on day one">Três coisas que um time ganha no primeiro dia</h2>
+    </div>
+    <div class="cards3">
+      <div class="vcard">
+        <div class="ic" aria-hidden="true">🏗️</div>
+        <h3 data-en="Architecture that outlives the sprint">Arquitetura que sobrevive à sprint</h3>
+        <p data-en="Clean Architecture, CQRS and microservices in .NET, with auditing, authentication and deploy already wired in. I built the internal platform that 30+ systems start from.">Clean Architecture, CQRS e microsserviços em .NET, com auditoria, autenticação e deploy já resolvidos. Construí a plataforma interna de onde 30+ sistemas partem.</p>
+      </div>
+      <div class="vcard">
+        <div class="ic" aria-hidden="true">🔐</div>
+        <h3 data-en="Security as a foundation, not a patch">Segurança como base, não remendo</h3>
+        <p data-en="Authentication and authorization (JWT, OAuth2, RBAC), access auditing and data protection — the layer every other system in the company depends on.">Autenticação e autorização (JWT, OAuth2, RBAC), auditoria de acesso e proteção de dados — a camada de que todos os outros sistemas da empresa dependem.</p>
+      </div>
+      <div class="vcard">
+        <div class="ic" aria-hidden="true">⚡</div>
+        <h3 data-en="Automation that removes manual work">Automação que remove trabalho manual</h3>
+        <p data-en="Code generators, scrapers, bots and AI agents that turn repetitive tasks into pipelines. Postgraduate in Artificial Intelligence; I ship with Claude Code, Codex and Cursor daily.">Geradores de código, scrapers, bots e agentes de IA que transformam tarefa repetitiva em pipeline. Pós-graduado em IA; uso Claude Code, Codex e Cursor no dia a dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-en="Tech stack">Stack técnica</span>
+      <h2 data-en="What I use — highlighted items are where I go deepest">Tecnologias — em destaque, onde eu vou mais fundo</h2>
+      <p class="sec-sub" data-en="Full stack in practice: I take a feature from the database model to the screen the user clicks.">Full stack na prática: levo uma feature do modelo no banco até a tela em que o usuário clica.</p>
+    </div>
+    <div class="stackgrid">
+      <div class="sgroup">
+        <h3 data-en="Back end">Backend</h3>
+        <div class="chips">
+          <span class="chip core">C#</span><span class="chip core">.NET / .NET Core</span><span class="chip core">ASP.NET MVC</span>
+          <span class="chip core">Web API REST</span><span class="chip" data-en="Microservices">Microsserviços</span><span class="chip">Clean Architecture</span>
+          <span class="chip">CQRS</span><span class="chip">Entity Framework</span><span class="chip">LINQ</span>
+          <span class="chip">Dapper</span><span class="chip">NHibernate</span><span class="chip">Blazor</span>
+          <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Java / Spring Boot</span>
+          <span class="chip">PHP</span><span class="chip">GraphQL</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Front end">Frontend</h3>
+        <div class="chips">
+          <span class="chip core">React</span><span class="chip core">Angular</span><span class="chip core">TypeScript</span>
+          <span class="chip core">JavaScript</span><span class="chip">Next.js</span><span class="chip">HTML5</span>
+          <span class="chip">CSS3</span><span class="chip">Bootstrap</span><span class="chip">Angular Material</span>
+          <span class="chip">jQuery</span><span class="chip">AJAX</span><span class="chip">Vite</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Data">Dados</h3>
+        <div class="chips">
+          <span class="chip core">Oracle</span><span class="chip core">SQL Server</span><span class="chip core">PostgreSQL</span>
+          <span class="chip">MySQL</span><span class="chip">Tibero</span><span class="chip">MongoDB</span>
+          <span class="chip">Redis</span><span class="chip">EF Migrations</span><span class="chip">PL/SQL</span>
+          <span class="chip" data-en="Data modelling">Modelagem de dados</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Security &amp; integration">Segurança e integração</h3>
+        <div class="chips">
+          <span class="chip core">JWT</span><span class="chip core">OAuth2</span><span class="chip">Azure Entra ID</span>
+          <span class="chip">RBAC / ABAC</span><span class="chip">Refresh tokens</span><span class="chip" data-en="Cryptography">Criptografia</span>
+          <span class="chip" data-en="Access auditing">Auditoria de acesso</span><span class="chip" data-en="RESTful services">Serviços RESTful</span><span class="chip" data-en="Messaging">Mensageria</span>
+          <span class="chip">JSON / XML</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Cloud &amp; DevOps">Cloud e DevOps</h3>
+        <div class="chips">
+          <span class="chip core">Git / GitHub</span><span class="chip">Azure</span><span class="chip">Azure DevOps</span>
+          <span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">Liquibase</span>
+          <span class="chip">CI/CD</span><span class="chip">Key Vault</span><span class="chip">Windows Services</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="AI &amp; automation">IA e automação</h3>
+        <div class="chips">
+          <span class="chip core" data-en="AI agents">Agentes de IA</span><span class="chip core">LLM / RAG</span><span class="chip">Claude Code</span>
+          <span class="chip">Codex</span><span class="chip">Cursor</span><span class="chip">OpenAI API</span>
+          <span class="chip">LLaMA local</span><span class="chip">Power Automate</span><span class="chip">Web scraping</span>
+          <span class="chip">OCR / Tesseract</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Testing &amp; quality">Testes e qualidade</h3>
+        <div class="chips">
+          <span class="chip core">Cypress (E2E)</span><span class="chip core">Selenium</span><span class="chip">WebDriver</span>
+          <span class="chip" data-en="Unit testing">Testes unitários</span><span class="chip">Code review</span><span class="chip">Git Flow</span>
+        </div>
+      </div>
+      <div class="sgroup">
+        <h3 data-en="Mobile &amp; method">Mobile e método</h3>
+        <div class="chips">
+          <span class="chip">Flutter / Dart</span><span class="chip">Kotlin + Compose</span><span class="chip">Capacitor</span>
+          <span class="chip">Scrum</span><span class="chip">Kanban</span><span class="chip" data-en="Technical documentation">Documentação técnica</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experiencia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-en="Experience">Experiência</span>
+      <h2 data-en="Eight years on the same critical systems — and growing with them">Oito anos nos mesmos sistemas críticos — crescendo com eles</h2>
+    </div>
+    <div class="tl">
+      <div class="job">
+        <div class="when" data-en="2020 — present">2020 — atual</div>
+        <h3 data-en="IT Systems Analyst — Mid-level / Senior">Analista de Sistemas de TI — Pleno</h3>
+        <p class="org">FUNCEF — Brasília, DF</p>
+        <ul>
+          <li data-en="<strong>Built the company's security platform</strong> — authentication, authorization, access auditing and deploy script generation, all configurable through the UI. It is the architectural base new projects start from and today serves <strong>more than 30 systems</strong>."><strong>Criei a plataforma de segurança da empresa</strong> — autenticação, autorização, auditoria de acesso e geração de script de deploy, tudo configurável por tela. É a base arquitetural de onde os projetos novos partem e hoje atende <strong>mais de 30 sistemas</strong>.</li>
+          <li data-en="<strong>Financial Portal</strong> — worked on the system that handles the company's payments and approval chains, where a wrong number is not an option."><strong>Portal Financeiro</strong> — atuei no sistema que trata os pagamentos e as cadeias de aprovação da empresa, onde número errado não é opção.</li>
+          <li data-en="Delivered features end to end: Oracle modelling, .NET / .NET Core back end, Angular and React front end, deploy and monitoring."><strong>Entrega ponta a ponta</strong>: modelagem no Oracle, backend .NET / .NET Core, frontend em Angular e React, deploy e acompanhamento em produção.</li>
+          <li data-en="Standards and reuse: shared component libraries, technical documentation and patterns other squads adopt."><strong>Padrão e reuso</strong>: bibliotecas de componentes compartilhadas, documentação técnica e padrões adotados por outras equipes.</li>
+          <li data-en="Automation and AI: internal tools and agents that cut manual, repetitive work out of the development routine."><strong>Automação e IA</strong>: ferramentas internas e agentes que tiram trabalho manual e repetitivo da rotina de desenvolvimento.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="when" data-en="2018 — 2020">2018 — 2020</div>
+        <h3 data-en="IT Systems Analyst — Junior">Analista de Sistemas de TI — Júnior</h3>
+        <p class="org">FUNCEF — Brasília, DF</p>
+        <ul>
+          <li data-en="Development of digital solutions focused on high availability and security, in .NET, ASP.NET MVC, JavaScript and jQuery over Oracle.">Desenvolvimento de soluções digitais com foco em alta disponibilidade e segurança, em .NET, ASP.NET MVC, JavaScript e jQuery sobre Oracle.</li>
+          <li data-en="Maintenance and evolution of legacy systems, plus the first automated test routines (Selenium).">Manutenção e evolução de sistemas legados e primeiras rotinas de teste automatizado (Selenium).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-en="Open source &amp; side projects">Código aberto e projetos próprios</span>
+      <h2 data-en="Code you can actually read">Código que dá para ler</h2>
+      <p class="sec-sub" data-en="Corporate work stays behind the firewall, so here is what is public on my GitHub — the same technologies, out in the open.">O trabalho corporativo fica atrás do firewall, então aqui está o que é público no meu GitHub — as mesmas tecnologias, à mostra.</p>
+    </div>
+    <div class="pgrid">
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/Arquiteto-de-Codigo" target="_blank" rel="noopener">Arquiteto-de-Codigo</a></h3><span class="badge" data-en="AI">IA</span></div>
+        <p data-en="A local AI that connects to Azure DevOps or GitHub repositories, reads the code, suggests improvements and generates documentation and CRUDs from the project structure — running entirely on your own machine.">IA local que acessa repositórios do Azure DevOps ou GitHub, lê o código, sugere melhorias e gera documentação e CRUDs a partir da estrutura do projeto — rodando inteiramente na própria máquina.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag" data-en="Static analysis">Análise estática</span><span class="tag">Git APIs</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/Mensagem" target="_blank" rel="noopener">Mensagem</a></h3><span class="badge" data-en="Full stack">Full stack</span></div>
+        <p data-en="Complete platform for sending and managing WhatsApp and SMS messages: .NET back end, Angular front end and supporting services. Shows the whole stack in one project.">Plataforma completa para envio e gestão de mensagens via WhatsApp e SMS: backend .NET, frontend Angular e serviços auxiliares. Mostra a stack inteira em um só projeto.</p>
+        <div class="tags"><span class="tag">C# / .NET</span><span class="tag">Angular</span><span class="tag">REST</span><span class="tag" data-en="Integrations">Integrações</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/WhatSappWeb" target="_blank" rel="noopener">WhatSappWeb</a></h3><span class="badge" data-en="Back end">Backend</span></div>
+        <p data-en="Modular system for WhatsApp automation and message dispatch, with a .NET back end and MongoDB persistence.">Sistema modular para automação e envio de mensagens WhatsApp, com backend em .NET e persistência em MongoDB.</p>
+        <div class="tags"><span class="tag">C# / .NET</span><span class="tag">MongoDB</span><span class="tag" data-en="Automation">Automação</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/Moeda" target="_blank" rel="noopener">Moeda</a></h3><span class="badge" data-en="Front end">Frontend</span></div>
+        <p data-en="Angular app for currency quotes, built with Angular CLI and Angular Material following modular architecture and component best practices. MIT licensed.">App Angular para consulta de cotações de moedas, com Angular CLI e Angular Material, seguindo arquitetura modular e boas práticas de componentização. Licença MIT.</p>
+        <div class="tags"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Material</span><span class="tag">MIT</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/WordFixer.AI" target="_blank" rel="noopener">WordFixer.AI</a></h3><span class="badge">C#</span></div>
+        <p data-en="C# tool that reads, extracts, corrects and replaces text inside Word (.docx) files while preserving the document's original formatting — the hard part.">Ferramenta em C# que lê, extrai, corrige e substitui textos em arquivos Word (.docx) preservando toda a formatação original do documento — a parte difícil.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">OpenXML</span><span class="tag" data-en="AI">IA</span><span class="tag">MIT</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/Estudo" target="_blank" rel="noopener">Estudo</a></h3><span class="badge" data-en="Architecture">Arquitetura</span></div>
+        <p data-en="Multi-module reference solution on .NET 9 / C# 13 demonstrating modern REST API architecture, JWT authentication and GraphQL.">Solução multi-módulo em .NET 9 / C# 13 demonstrando arquitetura moderna de API REST, autenticação JWT e GraphQL.</p>
+        <div class="tags"><span class="tag">.NET 9</span><span class="tag">JWT</span><span class="tag">GraphQL</span><span class="tag">Clean Arch</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/CrudMate" target="_blank" rel="noopener">CrudMate</a></h3><span class="badge" data-en="Productivity">Produtividade</span></div>
+        <p data-en="Development copilot that turns a specification into working code in seconds — the idea being that boilerplate should not be typed by hand.">Copiloto de desenvolvimento que transforma especificação em código funcionando em segundos — a premissa de que boilerplate não deveria ser digitado à mão.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag" data-en="Code generation">Geração de código</span><span class="tag">LLM</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/deepsproxy" target="_blank" rel="noopener">deepsproxy</a></h3><span class="badge" data-en="Infra">Infra</span></div>
+        <p data-en="DeepSeek proxy exposing an OpenAI-compatible API, so existing clients work against a different model without changing a line.">Proxy para DeepSeek expondo API compatível com OpenAI, permitindo que clientes existentes usem outro modelo sem mudar uma linha.</p>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">API design</span><span class="tag">ISC</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/cy-linkedin" target="_blank" rel="noopener">cy-linkedin</a></h3><span class="badge" data-en="Testing">Testes</span></div>
+        <p data-en="End-to-end test suite in Cypress automating real interaction scenarios on LinkedIn — automated QA over a UI I do not control.">Suíte de testes end-to-end em Cypress automatizando cenários de interação real no LinkedIn — QA automatizado sobre uma UI que não controlo.</p>
+        <div class="tags"><span class="tag">Cypress</span><span class="tag">E2E</span><span class="tag">JavaScript</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/DevPrompt" target="_blank" rel="noopener">DevPrompt</a></h3><span class="badge">.NET</span></div>
+        <p data-en="Command-line assistant for .NET developers: give it a table's SQL script and a local LLaMA model generates the whole CRUD.">Assistente de linha de comando para devs .NET: recebe o script SQL de uma tabela e, com um modelo LLaMA local, gera o CRUD completo.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">CLI</span><span class="tag">LLaMA</span><span class="tag">SQL</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/claude-notifier-extension" target="_blank" rel="noopener">claude-notifier-extension</a></h3><span class="badge" data-en="Extension">Extensão</span></div>
+        <p data-en="Chrome extension that monitors Claude usage limits and pushes a notification via ntfy when access is back. Localised in pt-BR, English and Spanish.">Extensão Chrome que monitora o limite de uso do Claude e notifica via ntfy quando o acesso é liberado. Localizada em pt-BR, inglês e espanhol.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Chrome API</span><span class="tag">i18n</span><span class="tag">ntfy</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="ptop"><h3><a href="https://github.com/DanielSCaldeira/spring-boot" target="_blank" rel="noopener">spring-boot</a></h3><span class="badge">Java</span></div>
+        <p data-en="Web application on Spring Boot with MySQL and security mechanisms — proof that the reasoning travels beyond the .NET ecosystem.">Aplicação web em Spring Boot com MySQL e mecanismos de segurança — prova de que o raciocínio atravessa o ecossistema .NET.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">Security</span></div>
+      </article>
+
+    </div>
+    <p style="margin:22px 0 0; font-size:.9rem; color:var(--fg-dim)" data-en="Around 60 repositories in total, including private ones — Flutter apps, multi-agent orchestrators, scrapers and .NET services. <a href='https://github.com/DanielSCaldeira?tab=repositories'>See everything on GitHub ↗</a>">Cerca de 60 repositórios no total, contando os privados — apps Flutter, orquestradores multi-agente, scrapers e serviços .NET. <a href="https://github.com/DanielSCaldeira?tab=repositories" target="_blank" rel="noopener">Ver tudo no GitHub ↗</a></p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="formacao">
+  <div class="wrap cols2">
+    <div>
+      <div class="sec-head">
+        <span class="sec-kicker" data-en="Education">Formação</span>
+        <h2 data-en="Academic background">Trajetória acadêmica</h2>
+      </div>
+      <div class="edu">
+        <div class="edu-item">
+          <div class="yr">2024 — 2025</div>
+          <div><b data-en="Postgraduate — Artificial Intelligence">Pós-graduação em Inteligência Artificial</b><span>Faculdade Focus</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="yr">2016 — 2018</div>
+          <div><b data-en="Systems Analysis &amp; Development">Análise e Desenvolvimento de Sistemas</b><span>Faculdade Projeção</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="yr">2014 — 2016</div>
+          <div><b data-en="Public Management">Gestão Pública</b><span>Faculdade Projeção</span></div>
+        </div>
+        <div class="edu-item">
+          <div class="yr">2013 — 2014</div>
+          <div><b data-en="Technical degree — Accounting">Técnico em Contabilidade</b><span>Senac DF</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head">
+        <span class="sec-kicker" data-en="Beyond the code">Além do código</span>
+        <h2 data-en="How I work">Como eu trabalho</h2>
+      </div>
+      <div class="chips" style="gap:7px">
+        <span class="chip" data-en="Systems thinking">Visão sistêmica</span>
+        <span class="chip" data-en="Technical leadership">Liderança técnica</span>
+        <span class="chip" data-en="Clear communication">Comunicação clara</span>
+        <span class="chip" data-en="Problem solving">Resolução de problemas</span>
+        <span class="chip" data-en="Teamwork">Trabalho em equipe</span>
+        <span class="chip" data-en="Self-taught">Autodidata</span>
+        <span class="chip" data-en="Product mindset">Mentalidade de produto</span>
+        <span class="chip" data-en="Mentoring">Mentoria</span>
+      </div>
+      <p class="sec-sub" style="margin-top:18px" data-en="I learn the next tool because a problem asked for it, not because it was on a syllabus. That is how the security platform, the AI agents and every side project in the list above came about.">Aprendo a ferramenta seguinte porque um problema pediu, não porque estava na grade. Foi assim que nasceram a plataforma de segurança, os agentes de IA e cada projeto da lista acima.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="sec-kicker" data-en="Contact">Contato</span>
+    <h2 data-en="Hiring for .NET, React or Angular?">Contratando para .NET, React ou Angular?</h2>
+    <p data-en="Tell me about the problem the team is trying to solve — that is the part I care about. I answer every message.">Me conte qual problema o time está tentando resolver — é essa parte que me interessa. Respondo todas as mensagens.</p>
+    <div class="clist">
+      <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Oportunidade%20—%20Desenvolvedor%20Full%20Stack">soarescaldeira@outlook.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/danielsoarescaldeira" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/DanielSCaldeira" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="btn" id="print2" type="button" data-en="⬇ Save as PDF">⬇ Salvar em PDF</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0" data-en="Built by hand — static HTML on GitHub Pages. Last updated September 2026.">Feito à mão — HTML estático no GitHub Pages. Atualizado em setembro de 2026.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  };
+
+  /* ---- theme ---- */
+  var savedTheme = store.get('dsc-theme');
+  if (savedTheme === 'dark' || savedTheme === 'light') root.setAttribute('data-theme', savedTheme);
+  function currentTheme(){
+    var attr = root.getAttribute('data-theme');
+    if (attr) return attr;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.getElementById('theme').addEventListener('click', function(){
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    store.set('dsc-theme', next);
+  });
+
+  /* ---- i18n: PT is in the DOM, EN lives in data-en ---- */
+  var nodes = document.querySelectorAll('[data-en]');
+  Array.prototype.forEach.call(nodes, function(el){ el.setAttribute('data-pt', el.innerHTML); });
+  var langBtn = document.getElementById('lang');
+
+  function apply(lang){
+    Array.prototype.forEach.call(nodes, function(el){
+      var v = el.getAttribute(lang === 'en' ? 'data-en' : 'data-pt');
+      if (v !== null) el.innerHTML = v;
+    });
+    root.setAttribute('lang', lang === 'en' ? 'en' : 'pt-BR');
+    langBtn.textContent = lang === 'en' ? 'PT' : 'EN';
+    langBtn.innerHTML = lang === 'en' ? 'PT' : 'EN';
+    store.set('dsc-lang', lang);
+  }
+
+  var savedLang = store.get('dsc-lang');
+  if (!savedLang) {
+    savedLang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+  }
+  if (savedLang === 'en') apply('en'); else apply('pt');
+
+  langBtn.addEventListener('click', function(){
+    apply(root.getAttribute('lang') === 'en' ? 'pt' : 'en');
+  });
+
+  /* ---- print / PDF ---- */
+  ['print','print2'].forEach(function(id){
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', function(){ window.print(); });
+  });
+})();
+</script>
+</body>
+</html>
