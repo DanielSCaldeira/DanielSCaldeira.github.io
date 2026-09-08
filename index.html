@@ -235,6 +235,20 @@ h2{font-size:clamp(1.35rem,3vw,1.75rem); letter-spacing:-.02em; margin:0; font-w
 .proj.locked{border-style:dashed; border-color:var(--line-strong); box-shadow:none; background:linear-gradient(180deg, var(--bg-soft), var(--bg-elev))}
 .proj.locked h3{color:var(--fg)}
 .proj.locked .badge{background:var(--bg-soft); color:var(--fg-dim); border:1px solid var(--line)}
+.proj.featured{grid-column:1/-1; border-style:solid; border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.proj.featured .ptop h3{font-size:1.12rem}
+.proj.featured .why{
+  margin:0 0 14px; padding:0; list-style:none; display:grid; gap:9px;
+}
+.proj.featured .why li{
+  font-size:.89rem; color:var(--fg-muted); padding-left:20px; position:relative;
+}
+.proj.featured .why li::before{
+  content:"▸"; position:absolute; left:2px; top:0; color:var(--accent); font-weight:700;
+}
+.proj.featured .why li strong{color:var(--fg); font-weight:650}
+@media (min-width:900px){ .proj.featured .why{grid-template-columns:1fr 1fr; gap:9px 26px} }
+
 .privnote{
   display:flex; gap:12px; align-items:flex-start;
   background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
@@ -573,6 +587,20 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
     </div>
 
     <div class="pgrid">
+
+      <article class="proj locked featured">
+        <div class="ptop"><h3>Mibo · Central de Câmeras</h3><span class="badge" data-en="In production">Em produção</span></div>
+        <p data-en="Intelbras cameras sitting behind CGNAT — nobody can receive an inbound connection. So I built the relay: the cameras push RTMP out to a VPS with a public IP, the browser pulls low-latency HLS (1–3 s), and recording runs 24/7. No vendor app, no monthly fee. It has been running in production for months.">Câmeras Intelbras atrás de CGNAT — ninguém recebe conexão de entrada. Então construí o relay: as câmeras empurram RTMP para um VPS com IP público, o navegador puxa HLS de baixa latência (1–3 s) e a gravação roda 24/7. Sem app do fabricante, sem mensalidade. Está em produção há meses.</p>
+        <ul class="why">
+          <li data-en="<strong>~25 systemd services</strong> on one free-tier VPS: MediaMTX, Caddy (HTTPS + auth), fail2ban, a geographic allow-list via ipset, and a WireGuard bridge through a MikroTik router."><strong>~25 serviços systemd</strong> num único VPS gratuito: MediaMTX, Caddy (HTTPS + auth), fail2ban, allow-list geográfica por ipset e ponte WireGuard via MikroTik.</li>
+          <li data-en="<strong>Privilege separation</strong> — &ldquo;the web asks, root executes&rdquo;: the panel writes to a queue, a root runner acts on it. The web layer never gains privilege."><strong>Separação de privilégio</strong> — &ldquo;web pede, root executa&rdquo;: o painel enfileira, um runner root executa. A camada web nunca ganha privilégio.</li>
+          <li data-en="<strong>An AI pipeline over footage already on disk</strong>: pt-BR speech transcription, threat and incident classification with anti-hallucination gates, acoustic detection (YAMNet), vision for person/vehicle/animal, plus camera-tampering detection by perceptual hash."><strong>Esteira de IA sobre o que já está gravado</strong>: transcrição da fala em pt-BR, classificação de ameaça e ocorrência com portões contra alucinação, detecção acústica (YAMNet), visão para pessoa/veículo/animal e sabotagem de câmera por hash perceptual.</li>
+          <li data-en="<strong>It heals itself</strong>: an external dead-man switch plus an escalation ladder — restart the unit, reboot the box, then power the instance back on through the provider API, capped per day."><strong>Ele se cura</strong>: dead-man switch externo e escada de recuperação — reinicia o serviço, reinicia a máquina, e por fim religa a instância pela API do provedor, com teto diário.</li>
+          <li data-en="<strong>No alert buzzes a phone without a second witness.</strong> The camera API lied in both directions — &ldquo;frozen&rdquo; on a still night scene, &ldquo;offline&rdquo; while publishing — so the recordings themselves became the proof."><strong>Nenhum alerta vibra o celular sem segunda testemunha.</strong> A API da câmera mentia nos dois sentidos — &ldquo;travada&rdquo; numa cena noturna parada, &ldquo;caiu&rdquo; publicando normalmente — então as próprias gravações passaram a ser a prova.</li>
+          <li data-en="<strong>Every fix has an incident behind it.</strong> A 13-hour recording block caused an OOM and killed the server for 3.5 h; that is why a service now guarantees a 2-minute ceiling per block. A white-box security audit is tracked with findings and status."><strong>Cada correção tem um incidente atrás.</strong> Um bloco de gravação de 13 h causou OOM e matou o servidor por 3h30; é por isso que hoje um serviço garante teto de 2 min por bloco. Há auditoria de segurança white-box com achados e status rastreados.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">systemd</span><span class="tag">MediaMTX / HLS</span><span class="tag">Caddy</span><span class="tag">WireGuard</span><span class="tag">Oracle Cloud</span><span class="tag">fail2ban / ipset</span><span class="tag">Whisper</span><span class="tag">YAMNet</span><span class="tag" data-en="Automated tests">Testes automatizados</span></div>
+      </article>
 
       <article class="proj locked">
         <div class="ptop"><h3>Autonomous Factory</h3><span class="badge" data-en="Multi-agent">Multiagente</span></div>
