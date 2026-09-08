@@ -725,10 +725,8 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
     store.set('dsc-lang', lang);
   }
 
+  /* portugues e o padrao; so muda se o visitante trocar no botao */
   var savedLang = store.get('dsc-lang');
-  if (!savedLang) {
-    savedLang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
-  }
   if (savedLang === 'en') apply('en'); else apply('pt');
 
   langBtn.addEventListener('click', function(){
