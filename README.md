@@ -8,7 +8,7 @@ Uma página, sem dependências externas, sem build. HTML + CSS + um script curto
 
 ## O que tem dentro
 
-- **PT / EN** por botão (o idioma inicial segue o navegador e fica salvo)
+- **PT / EN** por botão — abre sempre em português; se o visitante trocar, a escolha fica salva no navegador dele
 - **Tema claro / escuro** (segue o sistema, com toggle manual)
 - **Botão PDF** — imprime em layout próprio para impressão, sem menu nem botões
 - Responsiva, acessível (foco visível, skip link, contraste AA)
