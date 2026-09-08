@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daniel Soares Caldeira — Desenvolvedor Full Stack .NET</title>
-<meta name="description" content="Desenvolvedor Full Stack com 8 anos de experiência em .NET, C#, React e Angular. Arquitetura de sistemas, microsserviços, Oracle e automação com IA.">
+<meta name="description" content="Desenvolvedor Full Stack remoto com 8 anos de experiência em .NET, C#, React e Angular. Arquitetura de sistemas, microsserviços, Oracle, Power BI e automação com IA.">
 <meta name="author" content="Daniel Soares Caldeira">
 <meta name="theme-color" content="#0b1120">
 <link rel="canonical" href="https://danielscaldeira.github.io/">
 
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Daniel Soares Caldeira — Desenvolvedor Full Stack .NET">
-<meta property="og:description" content="8 anos construindo sistemas críticos em .NET, C#, React e Angular. Autor da plataforma de segurança que serve de base para 30+ sistemas internos.">
+<meta property="og:description" content="Desenvolvedor Full Stack remoto. 8 anos construindo sistemas críticos em .NET, C#, React e Angular. Autor da plataforma de segurança que serve de base para 30+ sistemas internos.">
 <meta property="og:url" content="https://danielscaldeira.github.io/">
 <meta name="twitter:card" content="summary">
 
@@ -232,6 +232,16 @@ h2{font-size:clamp(1.35rem,3vw,1.75rem); letter-spacing:-.02em; margin:0; font-w
 .tags{display:flex; flex-wrap:wrap; gap:5px}
 .tag{font-family:var(--mono); font-size:.7rem; padding:3px 7px; border-radius:5px; background:var(--bg-soft); color:var(--fg-dim); border:1px solid var(--line)}
 
+.proj.locked{border-style:dashed; border-color:var(--line-strong); box-shadow:none; background:linear-gradient(180deg, var(--bg-soft), var(--bg-elev))}
+.proj.locked h3{color:var(--fg)}
+.proj.locked .badge{background:var(--bg-soft); color:var(--fg-dim); border:1px solid var(--line)}
+.privnote{
+  display:flex; gap:12px; align-items:flex-start;
+  background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  border-radius:var(--radius); padding:15px 17px; margin-bottom:24px; font-size:.9rem; color:var(--fg-muted);
+}
+.privnote b{color:var(--fg)}
+
 /* two col */
 .cols2{display:grid; grid-template-columns:1.15fr .85fr; gap:36px}
 @media (max-width:800px){ .cols2{grid-template-columns:1fr; gap:28px} }
@@ -274,7 +284,8 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
     <nav class="links" aria-label="Seções">
       <a href="#stack" data-en="Stack">Stack</a>
       <a href="#experiencia" data-en="Experience">Experiência</a>
-      <a href="#projetos" data-en="Projects">Projetos</a>
+      <a href="#projetos" data-en="Public">Públicos</a>
+      <a href="#privados" data-en="Private">Privados</a>
       <a href="#formacao" data-en="Education">Formação</a>
       <a href="#contato" data-en="Contact">Contato</a>
     </nav>
@@ -292,16 +303,16 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow" data-en="Open to opportunities">Aberto a oportunidades</span>
+      <span class="eyebrow" data-en="Open to remote roles">Aberto a vagas remotas</span>
       <h1>Daniel Soares Caldeira</h1>
       <p class="role" data-en="Full Stack Developer — <em>.NET / C#</em> on the back end, <em>React &amp; Angular</em> on the front">Desenvolvedor Full Stack — <em>.NET / C#</em> no backend, <em>React e Angular</em> no front</p>
       <p class="pitch" data-en="Eight years building systems that cannot fail: authentication and security, financial payment flows and internal platforms. I design the architecture, write the back end, deliver the screen — and automate whatever is repetitive along the way.">Oito anos construindo sistemas que não podem falhar: autenticação e segurança, fluxos financeiros de pagamento e plataformas internas. Desenho a arquitetura, escrevo o backend, entrego a tela — e automatizo o que é repetitivo no caminho.</p>
       <div class="meta">
-        <span data-en="📍 Brasília / DF — Brazil (hybrid or remote)">📍 Brasília / DF — híbrido ou remoto</span>
+        <span data-en="🌐 Remote only · based in Brasília / DF, Brazil (UTC−3)">🌐 Somente remoto · baseado em Brasília / DF (UTC−3)</span>
         <span data-en="🗣️ Portuguese (native) · English (technical)">🗣️ Português (nativo) · Inglês (técnico)</span>
       </div>
       <div class="actions">
-        <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Oportunidade%20—%20Desenvolvedor%20Full%20Stack" data-en="✉ Talk to me">✉ Falar comigo</a>
+        <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Vaga%20remota%20—%20Desenvolvedor%20Full%20Stack" data-en="✉ Talk to me">✉ Falar comigo</a>
         <a class="btn" href="https://www.linkedin.com/in/danielsoarescaldeira" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a class="btn" href="https://github.com/DanielSCaldeira" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
@@ -544,6 +555,64 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
   </div>
 </section>
 
+<!-- PRIVATE PROJECTS -->
+<section id="privados">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker" data-en="Behind closed doors">Atrás da porta fechada</span>
+      <h2 data-en="Private projects worth mentioning">Projetos privados que valem menção</h2>
+      <p class="sec-sub" data-en="These repositories are closed — they hold API keys, client data or products still in progress. I cannot hand you a link, but I can walk you through any of them live in an interview, code included.">Estes repositórios são fechados — guardam chaves de API, dados de clientes ou produtos ainda em andamento. Não consigo te dar um link, mas apresento qualquer um deles ao vivo numa entrevista, código incluído.</p>
+    </div>
+
+    <div class="privnote">
+      <span aria-hidden="true" style="font-size:1.15rem; line-height:1.3">🔒</span>
+      <span data-en="Why list what you cannot open? Because roughly two thirds of what I build lives here. The public repositories show <b>how</b> I write code; these show <b>what scale</b> I take on.">Por que listar o que não se pode abrir? Porque cerca de dois terços do que eu construo está aqui. Os repositórios públicos mostram <b>como</b> eu escrevo código; estes mostram <b>em que escala</b> eu me meto.</span>
+    </div>
+
+    <div class="pgrid">
+
+      <article class="proj locked">
+        <div class="ptop"><h3>Autonomous Factory</h3><span class="badge" data-en="Multi-agent">Multiagente</span></div>
+        <p data-en="A software factory: a multi-agent orchestrator that takes an objective and returns a working system — it plans, writes the code, tests and iterates. Two of my public API repositories were generated by it, not by me.">Uma fábrica de software: orquestrador multi-agente que recebe um objetivo e devolve um sistema funcionando — planeja, escreve o código, testa e itera. Dois dos meus repositórios públicos de API foram gerados por ela, não por mim.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag" data-en="Multi-agent">Multiagente</span><span class="tag">LLM</span><span class="tag" data-en="Orchestration">Orquestração</span></div>
+      </article>
+
+      <article class="proj locked">
+        <div class="ptop"><h3>VagaCerta</h3><span class="badge">.NET 8</span></div>
+        <p data-en="Tailors a CV to each job posting using AI. Monorepo: Vite + React on the front, ASP.NET Core .NET 8 on the back — the same architecture I apply at work, on my own terms.">Currículo otimizado por IA para cada vaga. Monorepo: Vite + React no front, ASP.NET Core .NET 8 no back — a mesma arquitetura que aplico no trabalho, aqui sob as minhas regras.</p>
+        <div class="tags"><span class="tag">.NET 8</span><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Monorepo</span><span class="tag">IA</span></div>
+      </article>
+
+      <article class="proj locked">
+        <div class="ptop"><h3>ZapGênio</h3><span class="badge" data-en="Automation">Automação</span></div>
+        <p data-en="WhatsApp customer-service automation with AI: a managed question-and-answer base, conversation handling and appointment scheduling.">Automação de atendimento via WhatsApp com IA: base gerenciada de perguntas e respostas, condução de conversas e agendamentos.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">IA</span><span class="tag">WhatsApp</span><span class="tag" data-en="Scheduling">Agendamento</span></div>
+      </article>
+
+      <article class="proj locked">
+        <div class="ptop"><h3 data-en="Flutter app factory">Fábrica de apps Flutter</h3><span class="badge">Mobile</span></div>
+        <p data-en="A monetised Flutter starter (AdMob + RevenueCat) plus the family of apps shipped from it — document scanning, voice dictation, offline training, tabletop utilities. Product thinking, not just code.">Um starter Flutter monetizado (AdMob + RevenueCat) e a família de apps publicados a partir dele — leitura de documentos, ditado por voz, treino offline, utilitários de mesa. Pensamento de produto, não só de código.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">AdMob</span><span class="tag">RevenueCat</span></div>
+      </article>
+
+      <article class="proj locked">
+        <div class="ptop"><h3 data-en="Samsung TV control + live streams">Controle de TV Samsung + streams</h3><span class="badge" data-en="Low level">Baixo nível</span></div>
+        <p data-en="An Android remote in Kotlin + Compose talking to Samsung Smart TVs over LAN/WebSocket (Tizen), paired with a scraper that serves live matches as an M3U playlist the TV plays natively. Protocol reading, no SDK.">Controle remoto Android em Kotlin + Compose conversando com Smart TVs Samsung por LAN/WebSocket (Tizen), somado a um scraper que entrega jogos ao vivo como lista M3U que a TV toca direto. Leitura de protocolo, sem SDK.</p>
+        <div class="tags"><span class="tag">Kotlin</span><span class="tag">Compose</span><span class="tag">WebSocket</span><span class="tag">HLS / M3U</span></div>
+      </article>
+
+      <article class="proj locked">
+        <div class="ptop"><h3>template-claude</h3><span class="badge" data-en="Tooling">Ferramental</span></div>
+        <p data-en="Reusable AI infrastructure: a <code>.claude/</code> structure I drop into any project's root, turning the assistant into a team of agents that already know that project's standards. It is how I keep my own throughput high.">Infraestrutura de IA reutilizável: uma estrutura <code>.claude/</code> que eu copio para a raiz de qualquer projeto, transformando o assistente em um time de agentes que já conhece os padrões daquele projeto. É como mantenho a minha própria vazão alta.</p>
+        <div class="tags"><span class="tag">IA</span><span class="tag" data-en="Agents">Agentes</span><span class="tag">DX</span><span class="tag" data-en="Automation">Automação</span></div>
+      </article>
+
+    </div>
+
+    <p style="margin:22px 0 0; font-size:.9rem; color:var(--fg-dim)" data-en="Corporate systems built at FUNCEF — the security platform and the Financial Portal — are covered under Experience and stay behind the company firewall.">Os sistemas corporativos construídos na FUNCEF — a plataforma de segurança e o Portal Financeiro — estão descritos em Experiência e permanecem atrás do firewall da empresa.</p>
+  </div>
+</section>
+
 <!-- EDUCATION -->
 <section id="formacao">
   <div class="wrap cols2">
@@ -595,10 +664,10 @@ footer{padding:26px 0 40px; text-align:center; font-size:.8rem; color:var(--fg-d
 <section class="contact" id="contato">
   <div class="wrap">
     <span class="sec-kicker" data-en="Contact">Contato</span>
-    <h2 data-en="Hiring for .NET, React or Angular?">Contratando para .NET, React ou Angular?</h2>
-    <p data-en="Tell me about the problem the team is trying to solve — that is the part I care about. I answer every message.">Me conte qual problema o time está tentando resolver — é essa parte que me interessa. Respondo todas as mensagens.</p>
+    <h2 data-en="Hiring remote for .NET, React or Angular?">Contratando remoto para .NET, React ou Angular?</h2>
+    <p data-en="I work <b>remotely only</b> — no hybrid, no relocation. Tell me about the problem the team is trying to solve; that is the part I care about. I answer every message.">Atuo <b>somente em regime remoto</b> — sem híbrido, sem mudança de cidade. Me conte qual problema o time está tentando resolver; é essa parte que me interessa. Respondo todas as mensagens.</p>
     <div class="clist">
-      <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Oportunidade%20—%20Desenvolvedor%20Full%20Stack">soarescaldeira@outlook.com</a>
+      <a class="btn primary" href="mailto:soarescaldeira@outlook.com?subject=Vaga%20remota%20—%20Desenvolvedor%20Full%20Stack">soarescaldeira@outlook.com</a>
       <a class="btn" href="https://www.linkedin.com/in/danielsoarescaldeira" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="https://github.com/DanielSCaldeira" target="_blank" rel="noopener">GitHub ↗</a>
       <button class="btn" id="print2" type="button" data-en="⬇ Save as PDF">⬇ Salvar em PDF</button>
